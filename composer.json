@@ -1,0 +1,14 @@
+{
+    "name": "rodrigotavares/catalogo",
+    "autoload": {
+        "psr-4": {
+            "Rodrigotavares\\Catalogo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rodrigo Cesar Tavares Ferreira"
+        }
+    ],
+    "require": {}
+}
