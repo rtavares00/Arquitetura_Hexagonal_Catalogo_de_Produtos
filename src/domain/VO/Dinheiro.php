@@ -20,11 +20,6 @@ final class Dinheiro
         return $this->centavos > $other->centavos;
     }
 
-    public function multiplyBy(Dinheiro $other): bool
-    {
-        return $other->centavos >= $this->centavos * 2;
-    }
-
     public function equalsTo(Dinheiro $other): bool
     {
         return $this->centavos === $other->centavos;
