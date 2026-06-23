@@ -52,9 +52,4 @@ class ProdutoRepositoryJson implements ProdutoRepository
         file_put_contents($this->JsonFilePath, json_encode($this->json) );
     }
 
-    public function imprimirCatalogo():void
-    {
-        var_dump( $this->json );
-    }
-   
 }

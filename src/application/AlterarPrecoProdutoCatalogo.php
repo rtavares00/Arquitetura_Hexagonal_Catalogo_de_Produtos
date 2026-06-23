@@ -5,7 +5,7 @@ namespace Rodrigotavares\Catalogo\application;
 use Rodrigotavares\Catalogo\port\ProdutoRepository;
 use Rodrigotavares\Catalogo\domain\VO\SKU;
 use Rodrigotavares\Catalogo\domain\VO\Dinheiro;
-//use Rodrigotavares\Catalogo\domain\Produto;
+use Rodrigotavares\Catalogo\domain\Produto;
 
 class AlterarPrecoProdutoCatalogo
 {
@@ -14,13 +14,12 @@ class AlterarPrecoProdutoCatalogo
 
     }
 
-    public function executar($sku ,$novoValorEmCentavos):void
+    public function executar($sku ,$novoValorEmCentavos):Produto
     {
         $produto = $this->repository->buscar( new SKU($sku) );
         $produto->alterarPreco( new Dinheiro($novoValorEmCentavos) );
         $this->repository->salvar($produto);
-        echo "Método executar Acionado com Sucesso \n";
-        echo "DUMP DO CATÁLOGO: \n\n";
-        $this->repository->imprimirCatalogo();
+
+        return $produto;
     }
 }

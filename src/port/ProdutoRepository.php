@@ -7,5 +7,4 @@ use Rodrigotavares\Catalogo\domain\VO\SKU;
 interface ProdutoRepository{
     public function salvar(Produto $produto):void;
     public function buscar(SKU $sku):Produto;
-    public function imprimirCatalogo():void;
 }
