@@ -23,21 +23,16 @@ Class Produto{
         return $this->valor;
     }
 
-    private function isDobroDe($valor):bool
+    private function atingeDobroDoPrecoAtual(Dinheiro $novoPreco): bool
     {
-        //var_dump( $this->getValor()->getCents() * 2 );
-        //var_dump($valor);
-        //var_dump($this->getValor()->getCents() * 2 >= $valor);
-        if($this->getValor()->getCents() * 2 <= $valor):
-           return true;
-        endif;
-        
-        return false;
+        $dobroDoPrecoAtual = $this->valor->multiplicarPor(2);
+
+        return $novoPreco->ehMaiorOuIgualA($dobroDoPrecoAtual);
     }
 
     public function alterarPreco(Dinheiro $novoPreco) :void
     {
-        if($this->isDobroDe($novoPreco->getCents())):
+        if($this->atingeDobroDoPrecoAtual($novoPreco)):
             throw new PrecoAcimaDoLimiteException ("O Novo Preço não pode ser Maior ou Igual ao Dobro do Preço Original");
         endif;
 

@@ -22,6 +22,16 @@ final class Dinheiro
         return $this->centavos > $other->centavos;
     }
 
+    public function ehMaiorOuIgualA(Dinheiro $other): bool
+    {
+        return $this->centavos >= $other->centavos;
+    }
+
+    public function multiplicarPor(int $fator): Dinheiro
+    {
+        return new Dinheiro($this->centavos * $fator);
+    }
+
     public function equalsTo(Dinheiro $other): bool
     {
         return $this->centavos === $other->centavos;
