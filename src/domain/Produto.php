@@ -4,6 +4,7 @@ namespace Rodrigotavares\Catalogo\domain;
 
 use Rodrigotavares\Catalogo\domain\VO\SKU;
 use Rodrigotavares\Catalogo\domain\VO\Dinheiro;
+use Rodrigotavares\Catalogo\domain\exception\PrecoAcimaDoLimiteException;
 
 Class Produto{
     
@@ -37,7 +38,7 @@ Class Produto{
     public function alterarPreco(Dinheiro $novoPreco) :void
     {
         if($this->isDobroDe($novoPreco->getCents())):
-            throw new \Exception ("O Novo Preço não pode ser Maior ou Igual ao Dobro do Preço Original");
+            throw new PrecoAcimaDoLimiteException ("O Novo Preço não pode ser Maior ou Igual ao Dobro do Preço Original");
         endif;
 
         $this->valor = $novoPreco; // ALTERAÇÃO DE ESTADO

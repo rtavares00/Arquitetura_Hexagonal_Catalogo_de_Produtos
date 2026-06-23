@@ -2,16 +2,18 @@
 
 namespace Rodrigotavares\Catalogo\domain\VO;
 
+use Rodrigotavares\Catalogo\domain\exception\DinheiroInvalidoException;
+
 final class Dinheiro
 {
     public function __construct(private int $centavos)
     {
         if($centavos === 0):
-            throw new \Exception("Dinheiro Não pode ter valor 0");
+            throw new DinheiroInvalidoException("Dinheiro Não pode ter valor 0");
         endif;
 
         if($centavos < 0):
-            throw new \Exception("Dinheiro nao pode ter valor negativo");
+            throw new DinheiroInvalidoException("Dinheiro nao pode ter valor negativo");
         endif;
     }
 

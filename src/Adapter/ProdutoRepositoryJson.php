@@ -6,6 +6,7 @@ use Rodrigotavares\Catalogo\domain\Produto;
 use Rodrigotavares\Catalogo\port\ProdutoRepository;
 use Rodrigotavares\Catalogo\domain\VO\SKU;
 use Rodrigotavares\Catalogo\domain\VO\Dinheiro;
+use Rodrigotavares\Catalogo\domain\exception\ProdutoNaoEncontradoException;
 
 class ProdutoRepositoryJson implements ProdutoRepository
 {
@@ -31,7 +32,7 @@ class ProdutoRepositoryJson implements ProdutoRepository
             endif;
         endforeach;
 
-        throw new \Exception ("Produto Não Localizado no Catálogo");
+        throw new ProdutoNaoEncontradoException ("Produto Não Localizado no Catálogo");
     }
 
     public function salvar(Produto $produto):void
@@ -45,7 +46,7 @@ class ProdutoRepositoryJson implements ProdutoRepository
         endforeach;
 
         if($localizou === false):
-            throw new \Exception ("Não localizou o produto no catálogo para que seja alterado o preço");
+            throw new ProdutoNaoEncontradoException ("Não localizou o produto no catálogo para que seja alterado o preço");
         endif;
 
         file_put_contents($this->JsonFilePath, json_encode($this->json) );
